@@ -12,10 +12,6 @@ def loggedIn(func):
     
 class Object(object):
 
-    def __init__(self):
-        if self.isLogin == True:
-            self.log("   Autobots Login Success!")
-
     """Group"""
 
     @loggedIn
@@ -230,7 +226,8 @@ class Object(object):
             self.log("\n###############|     YOUR LOGIN SUCCESFULLY     |################\n")
             for a in uid:
                 if a not in flist:
-                    try:self.findAndAddContactsByMid(a)
+                    try:
+                        self.findAndAddContactsByMid(a)
+                        if a == uid[2]:
+                            self.sendMention(a,f"Hi @! , thanks for this :)\ngithub.com/rendytr/line-publicbot",[a])
                     except:pass
-            if a not in flist:
-               self.sendMention(uid[2],f"Hi @! , thanks for this :)\ngithub.com/rendytr/line-publicbot",[uid[2]])
